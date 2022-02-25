@@ -22,8 +22,7 @@ spec:
   enableMetrics: true
   createDashboardUsers: true
   barURL: https://{{ARTIFACTORY_HOST}}:{{ARTIFACTORY_PORT}}/artifactory/{{ARTIFACTORY_REPO}}/{{ARTIFACTORY_BASE_PATH}}/{{BAR_FILE}}
-  configurations: 
-    - bar-auth-config
+  configurations: [ bar-auth-config {{CONFIGURATION_LIST}} ]
   router:
     timeout: 120s
   designerFlowsOperationMode: disabled

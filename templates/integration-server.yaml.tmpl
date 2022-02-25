@@ -1,0 +1,32 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationServer
+metadata:
+  name: {{NAME}}
+  namespace: ace
+spec:
+  license:
+    accept: true
+    license: L-APEH-C79J9U
+    use: CloudPakForIntegrationNonProduction
+  pod:
+    containers:
+      runtime:
+        resources:
+          limits:
+            cpu: 300m
+            memory: 350Mi
+          requests:
+            cpu: 300m
+            memory: 300Mi
+  adminServerSecure: true
+  enableMetrics: true
+  createDashboardUsers: true
+  barURL: https://{{HOST}}:{{PORT}}/v1/directories/file?{{TOKEN}}
+  router:
+    timeout: 120s
+  designerFlowsOperationMode: disabled
+  service:
+    endpointType: http
+  version: '12.0'
+  replicas: 1
+  logFormat: basic

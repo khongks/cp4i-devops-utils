@@ -1,0 +1,22 @@
+FROM ubuntu:20.04
+MAINTAINER Kok Sing Khong <khongks@gmail.com> 
+
+# docker build --no-cache -t oc-deploy .
+# oc patch configs.imageregistry.operator.openshift.io/cluster --patch '{"spec":{"defaultRoute":true}}' --type=merge
+# HOST=$(oc get route default-route -n openshift-image-registry --template='{{ .spec.host }}')
+# oc get secret -n openshift-ingress  router-certs-default -o go-template='{{index .data "tls.crt"}}' | base64 -d | sudo tee /etc/pki/ca-trust/source/anchors/${HOST}.crt  > /dev/null
+# docker login -u $(oc whoami) -p $(oc whoami -t) $HOST
+# docker tag oc-deploy:latest $HOST/jenkins/oc-deploy:latest
+# docker push $HOST/jenkins/oc-deploy:latest
+# docker run -it oc-deploy:latest
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends curl jq git sed wget
+
+RUN wget --no-check-certificate https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
+    && tar xvzf openshift-client-linux.tar.gz \
+    && mv kubectl /usr/local/bin \
+    && mv oc /usr/local/bin
+    
+USER root
+ENTRYPOINT ["bash"]

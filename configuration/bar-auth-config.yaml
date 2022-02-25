@@ -1,0 +1,9 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: Configuration
+metadata:
+  name: bar-auth-config
+  namespace: ace
+spec:
+  description: Stores bar auth
+  secretName: bar-auth-secret
+  type: barauth

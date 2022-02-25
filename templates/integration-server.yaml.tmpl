@@ -21,8 +21,8 @@ spec:
   adminServerSecure: true
   enableMetrics: true
   createDashboardUsers: true
-  barURL: https://{{HOST}}:{{PORT}}/v1/directories/file?{{TOKEN}}
-  configurations: [bar-auth-config{{CONFIGURATIONS}}]
+  barURL: https://{{ARTIFACTORY_HOST}}:{{ARTIFACTORY_PORT}}/artifactory/{{ARTIFACTORY_REPO}}/{{ARTIFACTORY_BASE_PATH}}/{{BAR_FILE}}.bar
+  configurations: [bar-auth-config{{CONFIGURATION_LIST}}]
   router:
     timeout: 120s
   designerFlowsOperationMode: disabled

@@ -2,11 +2,11 @@ apiVersion: appconnect.ibm.com/v1beta1
 kind: IntegrationServer
 metadata:
   name: {{NAME}}
-  namespace: ace
+  namespace: {{NAMESPACE}}
 spec:
   license:
     accept: true
-    license: L-APEH-C79J9U
+    license: {{ACE_LICENSE}}
     use: CloudPakForIntegrationNonProduction
   pod:
     containers:
@@ -28,6 +28,6 @@ spec:
   designerFlowsOperationMode: disabled
   service:
     endpointType: http
-  version: '12.0'
-  replicas: 1
+  version: {{ACE_VERSION}}
+  replicas: {{REPLICAS}}
   logFormat: basic
